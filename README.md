@@ -167,6 +167,43 @@ docuquery/
 
 ---
 
+## Healthcare Use Case
+
+DocuQuery's architecture maps directly to real-world healthcare data problems — specifically the challenge of making complex, unstructured payer policy documents queryable and actionable.
+
+**The Problem in Healthcare**
+
+Health insurers publish coverage policies as dense, inconsistent PDFs — prior authorization rules, formulary documents, clinical criteria, and benefit summaries. These documents are notoriously difficult to parse, search, and operationalize at scale. Teams at payers, providers, and health tech companies spend enormous manual effort just answering the question: *"Does this policy cover this procedure for this patient?"*
+
+**How This Architecture Applies**
+
+The same RAG pipeline powering DocuQuery can be adapted to ingest and query payer policy documents:
+
+| General Use | Healthcare Adaptation |
+|---|---|
+| Upload any PDF | Ingest payer policy PDFs from hundreds of insurers |
+| Chunk & embed text | Normalize policy language across different payer formats |
+| Vector similarity search | Retrieve relevant coverage criteria for a given clinical code |
+| Claude generates answer | Surface actionable coverage decisions with citations |
+| Multi-document support | Query across multiple payers simultaneously |
+
+**Example Queries This Architecture Could Handle**
+
+- *"What are the prior authorization requirements for lumbar MRI under Aetna's 2024 policy?"*
+- *"Does this policy cover continuous glucose monitoring for Type 2 diabetes?"*
+- *"What clinical criteria must be met for bariatric surgery coverage?"*
+
+**Extensions for Production Healthcare Systems**
+
+- **Structured extraction** — use LLMs to parse free-text policy criteria into structured JSON schemas (procedure codes, diagnosis requirements, step therapy rules)
+- **Evaluation harnesses** — build QA workflows to benchmark answer accuracy against known ground truth policy interpretations
+- **Audit trails** — log every query, retrieved chunk, and generated answer for compliance and explainability
+- **Fine-tuning** — adapt embeddings on healthcare-specific terminology (ICD-10, CPT codes, payer jargon) for higher retrieval precision
+
+This project demonstrates the foundational AI infrastructure — RAG pipelines, vector databases, LLM integration, and streaming APIs — required to build production-grade healthcare policy intelligence systems.
+
+---
+
 ## License
 
 MIT
